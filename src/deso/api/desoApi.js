@@ -61,6 +61,209 @@ class DesoApi {
 		}
 	}
 
+	async makeNftBids(publciKey, NFTPostHashHex, SerialNumber, BidAmount) {
+		if (!publciKey) {
+			console.log("publicKey is required");
+			return;
+		}
+
+		if (!NFTPostHashHex) {
+			console.log("NFTPostHashHex is required");
+			return;
+		}
+
+		if (!SerialNumber) {
+			console.log("SerialNumber is required");
+			return;
+		}
+
+		if (!BidAmount) {
+			console.log("BidAmount is required");
+			return;
+		}
+
+		const path = "/v0/make-nft-bid";
+		const data = {
+			UpdaterPublicKeyBase58Check: publciKey,
+			NFTPostHashHex: NFTPostHashHex,
+			SerialNumber: SerialNumber,
+			BidAmountNanos: BidAmount,
+			MinFeeRateNanosPerKB: 1000,
+		};
+		try {
+			const res = await this.getClient().post(path, data);
+			return res.data;
+		} catch (error) {
+			console.log(error);
+			return null;
+		}
+	}
+
+	async transferNftBids(
+		senderPublciKey,
+		recieverPublicKey,
+		NFTPostHashHex,
+		SerialNumber,
+		BidAmount,
+	) {
+		if (!senderPublciKey) {
+			console.log("senderPublciKey is required");
+			return;
+		}
+
+		if (!recieverPublicKey) {
+			console.log("recieverPublicKey is required");
+			return;
+		}
+
+		if (!NFTPostHashHex) {
+			console.log("NFTPostHashHex is required");
+			return;
+		}
+
+		if (!SerialNumber) {
+			console.log("SerialNumber is required");
+			return;
+		}
+
+		if (!BidAmount) {
+			console.log("BidAmount is required");
+			return;
+		}
+
+		const path = "/v0/transfer-nft-bid";
+		const data = {
+			SenderPublicKeyBase58Check: senderPublciKey,
+			RecieverPublicKeyBase58Check: recieverPublicKey,
+			NFTPostHashHex: NFTPostHashHex,
+			SerialNumber: SerialNumber,
+			EncryptedUnlockableText: "",
+			BidAmountNanos: BidAmount,
+			MinFeeRateNanosPerKB: 1000,
+		};
+		try {
+			const res = await this.getClient().post(path, data);
+			return res.data;
+		} catch (error) {
+			console.log(error);
+			return null;
+		}
+	}
+
+	async acceptNftTransfer(publciKey, NFTPostHashHex, SerialNumber) {
+		if (!publciKey) {
+			console.log("publicKey is required");
+			return;
+		}
+
+		if (!NFTPostHashHex) {
+			console.log("NFTPostHashHex is required");
+			return;
+		}
+
+		if (!SerialNumber) {
+			console.log("SerialNumber is required");
+			return;
+		}
+
+		const path = "/v0/accept-nft-transfer";
+		const data = {
+			UpdaterPublicKeyBase58Check: publciKey,
+			NFTPostHashHex: NFTPostHashHex,
+			SerialNumber: SerialNumber,
+			MinFeeRateNanosPerKB: 1000,
+		};
+		try {
+			const res = await this.getClient().post(path, data);
+			return res.data;
+		} catch (error) {
+			console.log(error);
+			return null;
+		}
+	}
+
+	async acceptNftBid(
+		publciKey,
+		bidderPublicKey,
+		NFTPostHashHex,
+		SerialNumber,
+		BidAmount,
+	) {
+		if (!publciKey) {
+			console.log("publicKey is required");
+			return;
+		}
+
+		if (!bidderPublicKey) {
+			console.log("bidderPublicKey is required");
+			return;
+		}
+
+		if (!NFTPostHashHex) {
+			console.log("NFTPostHashHex is required");
+			return;
+		}
+
+		if (!SerialNumber) {
+			console.log("SerialNumber is required");
+			return;
+		}
+
+		if (!BidAmount) {
+			console.log("BidAmount is required");
+			return;
+		}
+
+		const path = "/v0/accept-nft-bid";
+		const data = {
+			UpdaterPublicKeyBase58Check: publciKey,
+			NFTPostHashHex: NFTPostHashHex,
+			SerialNumber: SerialNumber,
+			BidderPublicKeyBase58Check: bidderPublicKey,
+			BidAmountNanos: BidAmount,
+			MinFeeRateNanosPerKB: 1000,
+		};
+		try {
+			const res = await this.getClient().post(path, data);
+			return res.data;
+		} catch (error) {
+			console.log(error);
+			return null;
+		}
+	}
+
+	async burnNft(publciKey, NFTPostHashHex, SerialNumber) {
+		if (!publciKey) {
+			console.log("publicKey is required");
+			return;
+		}
+
+		if (!NFTPostHashHex) {
+			console.log("NFTPostHashHex is required");
+			return;
+		}
+
+		if (!SerialNumber) {
+			console.log("SerialNumber is required");
+			return;
+		}
+
+		const path = "/v0/burn-nft";
+		const data = {
+			UpdaterPublicKeyBase58Check: publciKey,
+			NFTPostHashHex: NFTPostHashHex,
+			SerialNumber: SerialNumber,
+			MinFeeRateNanosPerKB: 1000,
+		};
+		try {
+			const res = await this.getClient().post(path, data);
+			return res.data;
+		} catch (error) {
+			console.log(error);
+			return null;
+		}
+	}
+
 	async getSinglePost(
 		postHash,
 		commentLimit = 20,
