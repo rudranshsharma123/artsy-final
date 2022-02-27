@@ -1,0 +1,35 @@
+#nav {
+	height: 50px;
+    width: 100vw;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: blue;
+}
+
+#nav-links {
+	display: flex;
+	list-style: none;
+	margin-right: 20px;
+	margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+	padding: 10px;
+	color: white;
+	font-weight: bold;
+    font-size: 30px;
+    font-family: monospace;
+}
+
+#nav-links-deso{
+ color: white;
+	font-weight: bold;
+    font-size: small;
+       font-family: monospace;
+}
+#buttons {
+	background: linear-gradient(135deg, #6699ff 0%, #ff3366 100%);
+    color: azure;
+    height: 60px !important;
+    width: 80px !important;
+}
